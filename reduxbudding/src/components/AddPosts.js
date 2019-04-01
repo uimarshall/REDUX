@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createPost } from "../actions/postActions";
+import PropTypes from "prop-types";
 
 class AddPosts extends Component {
 	state = {
@@ -15,14 +18,15 @@ class AddPosts extends Component {
 			body: this.state.body
 		};
 		e.preventDefault();
-		fetch("https://jsonplaceholder.typicode.com/posts", {
-			method: "POST",
-			headers: { "content-type": "application/json" },
-			// the 'body' is the actual data we want to send
-			body: JSON.stringify(post)
-		})
-			.then(res => res.json())
-			.then(data => console.log(data));
+		this.props.createPost(post);
+		// fetch("https://jsonplaceholder.typicode.com/posts", {
+		// 	method: "POST",
+		// 	headers: { "content-type": "application/json" },
+		// 	// the 'body' is the actual data we want to send
+		// 	body: JSON.stringify(post)
+		// })
+		// 	.then(res => res.json())
+		// 	.then(data => console.log(data));
 	};
 
 	render() {
@@ -55,4 +59,11 @@ class AddPosts extends Component {
 	}
 }
 
-export default AddPosts;
+AddPosts.propTypes = {
+	createPost: PropTypes.func.isRequired
+};
+
+export default connect(
+	null,
+	{ createPost }
+)(AddPosts);
