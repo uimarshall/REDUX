@@ -18,9 +18,10 @@ class AddPosts extends Component {
 		fetch("https://jsonplaceholder.typicode.com/posts", {
 			method: "POST",
 			headers: { "content-type": "application/json" },
+			// the 'body' is the actual data we want to send
 			body: JSON.stringify(post)
 		})
-			.then(res => res.json)
+			.then(res => res.json())
 			.then(data => console.log(data));
 	};
 
