@@ -7,6 +7,7 @@ class SignIn extends Component {
 	};
 	handleChange = e => {
 		this.setState({
+			// Grab the 'id' of the target element and update the 'state' wt whatever is typed in
 			[e.target.id]: e.target.value
 		});
 	};
