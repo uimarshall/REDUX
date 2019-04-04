@@ -1,7 +1,7 @@
 // The info on the state i.e 'projects' array will be stored in the 'project'
 // pty in the combineReducer
 // So we can access the projects array in a comp that subscribes as: 'state.project.projects'
-import CreateProject from "../actions/projectActions";
+
 const initState = {
 	projects: [
 		{
@@ -25,8 +25,8 @@ const initState = {
 // The 'state' params is the 'state of the redux store'
 const projectReducer = (state = initState, action) => {
 	switch (action.type) {
-		case CREATE_PROJECT:
-			console.log("created project", action.project);
+		case "CREATE_PROJECT":
+			console.log("created project", action.payload);
 	}
 	return state;
 };

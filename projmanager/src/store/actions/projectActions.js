@@ -7,7 +7,7 @@
 	};
 };*/
 
-// WITH THUNK: We return a 'func' instead of an 'obj'
+// WITH THUNK: We return a 'func' instead of an 'obj' inside the 'actn creator'
 export const createProject = project => {
 	// We return an arrow func that takes in 'dispatch' mtd 'getState' mtd
 	return (dispatch, getState) => {

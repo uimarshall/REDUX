@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import CreateProject from "../../store/actions/projectActions";
+import { createProject } from "../../store/actions/projectActions";
 // Connect to redux store
 import { connect } from "react-redux";
 
@@ -19,7 +19,7 @@ class CreateProject extends Component {
 		e.preventDefault();
 		// console.log(this.state);
 		// CreateProject func call
-		this.props.CreateProject(this.state);
+		this.props.createProject(this.state);
 	};
 	render() {
 		return (
@@ -57,7 +57,8 @@ It takes in the project we want to dispatch as params, which will be use to upda
 3. In this case to create a new Project*/
 const mapDispatchToProps = dispatch => {
 	return {
-		CreateProject: project => dispatch(createProject(project))
+		// The pty(createProject) that will be attached to our props is a func that performs dispatch for our comp.
+		createProject: project => dispatch(createProject(project))
 	};
 };
 
