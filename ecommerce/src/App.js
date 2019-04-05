@@ -12,7 +12,7 @@ import PageNotFound from "./components/PageNotFound";
 class App extends Component {
 	render() {
 		return (
-			<div className="App">
+			<React.Fragment>
 				<Navbar />
 				<Switch>
 					<Route exact path="/" component={ProductList} />
@@ -20,7 +20,7 @@ class App extends Component {
 					<Route exact path="/cart" component={Cart} />
 					<Route component={PageNotFound} />
 				</Switch>
-			</div>
+			</React.Fragment>
 		);
 	}
 }
