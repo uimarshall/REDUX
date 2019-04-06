@@ -12,7 +12,7 @@ export class ProductList extends Component {
 			<React.Fragment>
 				<div className="py-5">
 					<div className="container">
-						<Title name="our" title="produts" />
+						<Title name="get our" title="produts" />
 						<div className="row">
 							<ProductConsumer>
 								{value => {
