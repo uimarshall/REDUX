@@ -21,3 +21,6 @@ body {
 .text-bright {
 	color: var(--mainBlue);
 }
+.add-to-cart {
+	color: #00abfd;
+}
