@@ -5,7 +5,7 @@ import Title from "./Title";
 // ProductConsumer will provide our comp wt props frm the Context store for consumptn
 import { ProductConsumer } from "../context";
 
-export class ProductList extends Component {
+class ProductList extends Component {
 	render() {
 		// console.log(this.state.products);
 		return (

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const SignInLinks = () => {
 	return (
+		// Float right
 		<ul className="right">
 			<li>
 				<NavLink to="/create">New Project</NavLink>
@@ -11,7 +12,8 @@ const SignInLinks = () => {
 				<NavLink to="/">Log Out</NavLink>
 			</li>
 			<li>
-				<NavLink to="/" className="btn btn-floating pink lighten-1">
+				{/* btn-floating gives a circular shape */}
+				<NavLink to="/" className="btn btn-floating cyan lighten-1">
 					MM
 				</NavLink>
 			</li>

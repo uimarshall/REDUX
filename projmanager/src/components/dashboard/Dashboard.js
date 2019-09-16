@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Notifications from "./Notifications";
 import ProjectList from "../projects/ProjectList";
 
-// Connect to redux store
+// Connect our comp to the redux store
 import { connect } from "react-redux";
 // The 'connect' func will connect our comp(Dashboard) to the store and grant access to the state of the store
 

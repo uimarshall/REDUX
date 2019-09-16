@@ -4,6 +4,7 @@ export const ButtonContainer = styled.button`
 	font-size: 1.4rem;
 	background: transparent;
 	border: 0.05rem solid var(--lightBlue);
+	// pass 'cart' as props to a botton comp
 	border-color: ${props =>
 		props.cart ? "var(--mainYellow)" : "var(--lightBlue)"};
 	color: ${props => (props.cart ? "var(--mainYellow)" : "var(--lightBlue)")};

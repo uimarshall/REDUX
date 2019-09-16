@@ -12,8 +12,9 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	/* background: url(/images/proj-meeting-icon.png); */
 	background-size: 100%;
+	/* img should start frm bottom */
 	background-position: bottom;
-	background-color: aquamarine;
+	background-color: #26c6da;
 	min-height: 100%;
 }
 form {
@@ -25,10 +26,11 @@ form button,
 form h5 {
 	margin: 1.2rem 0;
 }
+/* Clicking inside the form should give an orangered color */
 input[type="text"]:not(.browser-default):focus:not([readonly]),
 input[type="email"]:not(.browser-default):focus:not([readonly]),
 input[type="password"]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-	border-color: #ec448b;
+	border-color: orangered;
 	box-shadow: none;
 }
