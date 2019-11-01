@@ -52,7 +52,7 @@ class CreateProject extends Component {
 /*Our comp will dispatch an actn to the Reducers. 
 1. What the 'dispatch' mtd does is to dispatch an actn from our comp hence ,
 it calls the createProject func which is passed as params to the dispatch mtd
-2. The dispatch is mapped to createProject pty which is attached to the props of our comp
+2. The dispatch is mapped to createProject func which is attached to the props of our comp
 It takes in the project we want to dispatch as params, which will be use to update the store
 3. In this case to create a new Project*/
 const mapDispatchToProps = dispatch => {
@@ -61,8 +61,16 @@ const mapDispatchToProps = dispatch => {
 		createProject: project => dispatch(createProject(project))
 	};
 };
-
+// NOTE, mapStateToProps must be the 1st parameter of the 'connect' mtd, hence we pass null in its absence
 export default connect(
 	null,
 	mapDispatchToProps
 )(CreateProject);
+
+// ========WHEN WE CALL THE createProject function==========
+// 1. we call it by issuing 'this.props.createProject' to invoke it.
+// 2. It takes in the project we want to create frm the form fields
+// 3. It returns the dispatch mtd which takes in the other 'createProject' mtd frm the actn creators
+// and pass in the project we want to craete
+// 4. The createProject mtd now interracts wt the firestore db
+// 5. The payload frm firebase is now passed to the reducer to update the state

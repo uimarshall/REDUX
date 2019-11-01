@@ -18,7 +18,7 @@ class App extends Component {
 					{/* Put Routes */}
 					<Switch>
 						<Route exact path="/" component={Dashboard} />
-						{/* Whenever we use the 'reac-router' to load in a comp, 
+						{/* Whenever we use the 'react-router' to load in a comp, 
 					the router automatically attaches a prop to that comp*/}
 						{/* The 'props' contains details/info about the router such as match, params, history */}
 						<Route path="/project/:id" component={ProjectDetails} />

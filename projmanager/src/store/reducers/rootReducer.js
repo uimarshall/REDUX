@@ -1,13 +1,16 @@
 import authReducer from "./authReducer";
 import projectReducer from "./projectReducer";
 import { combineReducers } from "redux";
+// This premade reducer helps to sync our firestore data to the state of our app in d background
+import { firestoreReducer } from "redux-firestore";
 
 // Invoke the combineReducers func and use to combine our reducers into one
 const rootReducer = combineReducers({
 	// 'auth'& 'project' pty are accessed on the 'state' of d store as 'state.auth'
 	// The authReducer will update info on the 'auth' pty inside the state obj and so on
 	auth: authReducer,
-	project: projectReducer
+	project: projectReducer,
+	firestore: firestoreReducer
 });
 export default rootReducer;
 

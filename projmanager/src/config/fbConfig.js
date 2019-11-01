@@ -15,6 +15,11 @@ var firebaseConfig = {
 };
 // Initialize Firebase - to connect our app to firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+// firebase.analytics();
+// Initialise firestore
+// firebase.firestore();
 firebase.firestore().settings({ timestampsInSnapshots: true });
 export default firebase;
+
+// A collection is a collection of documents
+// Each document contains a Js object

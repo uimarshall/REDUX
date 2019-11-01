@@ -14,17 +14,23 @@
   */
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css"; 
+import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 // 'compose' is used to add more store enhancers
 import { createStore, applyMiddleware, compose } from "redux";
 
 import rootReducer from "./store/reducers/rootReducer";
+// 'react-redux' library binds 'redux' to our react app, 'Provider' provides our app wt the redux store
 import { Provider } from "react-redux";
+// thunk is a store enhancer that provides us with func to interract wt database e.g dispatch(),getState()
+// It helps us perform async operatn togo and fetch data frm db
 import thunk from "redux-thunk";
-import { reduxFirestore, getFirestore } from "redux-firestore";
-import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
+// import { reduxFirestore, getFirestore } from "redux-firestore";
+import { createFirestoreInstance, getFirestore } from "redux-firestore";
+// 'reduxFirestore,reactReduxFirebase' are store enhancers
+// import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
+import { ReactReduxFirebaseProvider, getFirebase } from "react-redux-firebase";
 import fbConfig from "./config/fbConfig";
 
 // Create a store
@@ -35,16 +41,23 @@ const store = createStore(
 	rootReducer,
 	// Store enhancers
 	compose(
-		applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-		reduxFirestore(fbConfig),
-		reactReduxFirebase(fbConfig)
+		// reduxFirestore, reactReduxFirebase enable 'getFirebase, getFirestore' to know which 'firestore' to connect to.
+		applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore }))
+		// reduxFirestore(fbConfig),
+		// reactReduxFirebase(fbConfig)
 	)
 );
 
 ReactDOM.render(
 	// provide our app with the store
 	<Provider store={store}>
-		<App />
+		<ReactReduxFirebaseProvider
+			firebase={fbConfig}
+			config={fbConfig}
+			dispatch={store.dispatch}
+			createFirestoreInstance={createFirestoreInstance}>
+			<App />
+		</ReactReduxFirebaseProvider>
 	</Provider>,
 	document.getElementById("root")
 );

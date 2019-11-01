@@ -16,9 +16,29 @@ export const createProject = project => {
 		// Then resume dispatch
 		// The 'dispatch' mtd is what dispatches an actn to the 'Reducer'
 		// so we make async call to the firestore db to create new proj/save data to db
-		dispatch({
-			type: "CREATE_PROJECT",
-			payload: project
-		});
+
+		// Create ref to firestore
+		const firestore = getFirestore();
+		firestore
+			.collection("projects")
+			.add({
+				...project,
+				authorFirstName: "Wayne",
+				authorLastName: "Sharp",
+				authorId: 12345,
+				createdAt: new Date()
+			}) // to post to firestore is async/returns a promise so we attach then()
+			.then(() => {
+				dispatch({
+					type: "CREATE_PROJECT",
+					payload: project
+				});
+			})
+			.catch(err => {
+				dispatch({
+					type: "CREATE_PROJECT_ERROR",
+					payload: err
+				});
+			});
 	};
 };
