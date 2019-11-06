@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
+import { signOut } from "../../store/actions/authActions";
 
-const SignInLinks = () => {
+const SignInLinks = props => {
 	return (
 		// Float right
 		<ul className="right">
@@ -9,7 +11,7 @@ const SignInLinks = () => {
 				<NavLink to="/create">New Project</NavLink>
 			</li>
 			<li>
-				<NavLink to="/">Log Out</NavLink>
+				<a onClick={props.signOut}>Log Out</a>
 			</li>
 			<li>
 				{/* btn-floating gives a circular shape */}
@@ -21,4 +23,12 @@ const SignInLinks = () => {
 	);
 };
 
-export default SignInLinks;
+// We mapDispatchToProps so that we can dispatch the 'signOut()' actn creator frm our comps
+const mapDispatchToProps = dispatch => {
+	return { signOut: () => dispatch(signOut()) };
+};
+
+export default connect(
+	null,
+	mapDispatchToProps
+)(SignInLinks);

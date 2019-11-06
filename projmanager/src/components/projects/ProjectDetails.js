@@ -35,12 +35,14 @@ const ProjectDetails = props => {
 	}
 };
 const mapStateToProps = (state, ownProps) => {
+	// ownProps is the props of our comp b4 we attach any props sync frm d redux state
 	const id = ownProps.match.params.id;
+	// Extract 'projects' collection frm firestore
 	const projects = state.firestore.data.projects;
 	// Grab the project 'id' from firestore
 	const project = projects ? projects[id] : null;
 	return {
-		// map project to props of our comp
+		// map project to props of our comp, 'project.id' is what is stored in 'project' frm the ternary operatn
 		project: project
 	};
 };

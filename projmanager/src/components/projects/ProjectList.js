@@ -8,8 +8,9 @@ const ProjectList = ({ projects }) => {
 			{projects &&
 				projects.map(project => {
 					return (
-						<Link to={"/project/" + project.id}>
-							return <ProjectSummary project={project} key={project.id} />
+						// The key must be attached to d parent element (Link) else there will be error
+						<Link to={"/project/" + project.id} key={project.id}>
+							return <ProjectSummary project={project} />
 						</Link>
 					);
 				})}

@@ -3,6 +3,7 @@ import projectReducer from "./projectReducer";
 import { combineReducers } from "redux";
 // This premade reducer helps to sync our firestore data to the state of our app in d background
 import { firestoreReducer } from "redux-firestore";
+import { firebaseReducer } from "react-redux-firebase";
 
 // Invoke the combineReducers func and use to combine our reducers into one
 const rootReducer = combineReducers({
@@ -10,7 +11,10 @@ const rootReducer = combineReducers({
 	// The authReducer will update info on the 'auth' pty inside the state obj and so on
 	auth: authReducer,
 	project: projectReducer,
-	firestore: firestoreReducer
+	firestore: firestoreReducer,
+	// 'firebaseReducer' will sync our auth status in the firebase with our redux app in d state
+	// and pop it on the 'firebase' obj in the state to check if a user is loggedin or not.
+	firebase: firebaseReducer
 });
 export default rootReducer;
 
