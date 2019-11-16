@@ -48,6 +48,8 @@ const store = createStore(
 	)
 );
 
+// We hv to wait until firebase authenticatn is initialised b4 we render to DOM
+// 'attacheAuthIsReady: true' allows us to acess a mtd in the store called 'firebaseAuthIsReady'
 ReactDOM.render(
 	// provide our app with the store
 	<Provider store={store}>

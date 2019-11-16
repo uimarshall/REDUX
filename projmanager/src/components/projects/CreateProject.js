@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { createProject } from "../../store/actions/projectActions";
 // Connect to redux store
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
+import { createProject } from "../../store/actions/projectActions";
 
 class CreateProject extends Component {
 	state = {
@@ -22,6 +23,9 @@ class CreateProject extends Component {
 		this.props.createProject(this.state);
 	};
 	render() {
+		const { auth } = this.props;
+		// Route Protection: If no auth uid, return to signin else render the page
+		if (!auth.uid) return <Redirect to="/signin" />;
 		return (
 			<div className="container">
 				<form onSubmit={this.handleSubmit}>
@@ -49,6 +53,12 @@ class CreateProject extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => {
+	return {
+		auth: state.firebase.auth
+	};
+};
 /*Our comp will dispatch an actn to the Reducers. 
 1. What the 'dispatch' mtd does is to dispatch an actn from our comp hence ,
 it calls the createProject func which is passed as params to the dispatch mtd
@@ -63,7 +73,7 @@ const mapDispatchToProps = dispatch => {
 };
 // NOTE, mapStateToProps must be the 1st parameter of the 'connect' mtd, hence we pass null in its absence
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
 )(CreateProject);
 

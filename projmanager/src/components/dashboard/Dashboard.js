@@ -8,9 +8,13 @@ import ProjectList from "../projects/ProjectList";
 import { connect } from "react-redux";
 // The 'connect' func will connect our comp(Dashboard) to the store and grant access to the state of the store
 
+import { Redirect } from "react-router-dom";
 class Dashboard extends Component {
 	render() {
-		const { projects } = this.props;
+		const { projects, auth } = this.props;
+		// Route Protection
+		if (!auth.uid) return <Redirect to="/signin" />;
+
 		return (
 			<div className="dashboard container">
 				<div className="row">
@@ -34,7 +38,8 @@ const mapStateToProps = state => {
 		// This will produce the data we want to get from our store
 		// projects: state.project.projects
 		// Grab data from firestore
-		projects: state.firestore.ordered.projects
+		projects: state.firestore.ordered.projects,
+		auth: state.firebase.auth
 	};
 };
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 // Connect our comp to the redux store
@@ -6,7 +7,10 @@ import { connect } from "react-redux";
 const ProjectDetails = props => {
 	// console.log(props);
 	// const id = props.match.params.id;
-	const { project } = props;
+	const { project, auth } = props;
+
+	// Route Protection: If no auth uid, return to signin else render the page
+	if (!auth.uid) return <Redirect to="/signin" />;
 	if (project) {
 		return (
 			<div>
@@ -34,6 +38,7 @@ const ProjectDetails = props => {
 		);
 	}
 };
+
 const mapStateToProps = (state, ownProps) => {
 	// ownProps is the props of our comp b4 we attach any props sync frm d redux state
 	const id = ownProps.match.params.id;
@@ -43,7 +48,8 @@ const mapStateToProps = (state, ownProps) => {
 	const project = projects ? projects[id] : null;
 	return {
 		// map project to props of our comp, 'project.id' is what is stored in 'project' frm the ternary operatn
-		project: project
+		project: project,
+		auth: state.firebase.auth
 	};
 };
 
