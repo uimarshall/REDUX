@@ -1,3 +1,14 @@
+// Redux is a Js Object
+// It has a Reducer which is a func that interracts with the store
+// The reducer contains state & action as parameters,(both the state & action are Js objs)
+// The state is the state of the store
+// The Redux store must know which reducer is handling what, that is why we always pass the reducers into the store as a param
+//**************HOW IT WORKS********************
+// A component will dispatch an action to the store,
+// A reducer will then collect the action, based on the action, it will update the state of the store,
+// The components can then subscribe to data in the store to display on the frontend.
+// The so subscribed for is attached to the props of the components.
+
 // from Redux create store, so we get createStore frm Redux & store it
 // Redux = redux library
 // we do some destructuring
